@@ -12,8 +12,8 @@ dados_prophet_treino = dados_treino[['Date', 'Close']].rename(columns={'Date': '
 
 # estabelendo os dados treino
 modelo = Prophet(weekly_seasonality=True, #type: ignore
-                 yearly_seasonality=True,  #type: ignore
-                 daily_seasonality=False)  #type: ignore
+                yearly_seasonality=True,  #type: ignore
+                daily_seasonality=False)  #type: ignore
 modelo.add_country_holidays(country_name='US')
 modelo.fit(dados_prophet_treino)
 
