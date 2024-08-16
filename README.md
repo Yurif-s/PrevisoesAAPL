@@ -1,6 +1,10 @@
-# Análise dos dados das ações AAPL
+<h1 align="center">Análise dos dados das ações AAPL</h1>
 
-### Projeto simples com Python para análise de dados e previsão
+<h3 align="center">Projeto simples com Python para análise de dados e previsão</h3>
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+</p>
+
 
 ## Tecnologia
 - [Python](https://www.python.org/)
