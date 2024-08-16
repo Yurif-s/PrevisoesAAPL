@@ -5,7 +5,13 @@ from prophet import Prophet
 
 # baixando os dados da Apple do yahoo
 dados = yf.download('AAPL', start='2020-01-01', end='2024-12-31', progress=False)
+
+if dados.empty:
+    raise ValueError("Os dados retornados estão vazios. Verifique as datas e a disponibilidade dos dados.")
 dados = dados.reset_index()
+if dados['Date'].dtype != 'datetime64[ns]':
+    dados['Date'] = pd.to_datetime(dados['Date'])
+
 dados_treino = dados[dados['Date'] < '2023-12-31']
 dados_teste = dados[dados['Date'] >= '2023-12-31']
 dados_prophet_treino = dados_treino[['Date', 'Close']].rename(columns={'Date': 'ds', 'Close': 'y'})
@@ -18,7 +24,7 @@ modelo.add_country_holidays(country_name='US')
 modelo.fit(dados_prophet_treino)
 
 # definindo a previsao
-futuro = modelo.make_future_dataframe(periods=450)
+futuro = modelo.make_future_dataframe(periods=750)
 previsao = modelo.predict(futuro)
 
 # desenhando o gráfico
